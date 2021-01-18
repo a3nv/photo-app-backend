@@ -1,6 +1,8 @@
+### Simple get by label
+
 GET http://localhost:8080/photos/test
 
-###
+### Upload without an image
 
 POST http://localhost:8080/photo
 Content-Type: application/json
@@ -10,7 +12,7 @@ Content-Type: application/json
   "label": "ray"
 }
 
-###
+### Upload new image
 
 POST http://localhost:8080/upload
 Content-Type: multipart/form-data; boundary=WebAppBoundary
@@ -18,7 +20,7 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 --WebAppBoundary
 Content-Disposition: form-data; name="file"; filename="photo.txt"
 
-< ./wallhaven-j35k2y.jpeg
+< ./images/cat.jpeg
 --WebAppBoundary--
 
 ###

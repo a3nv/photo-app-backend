@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
+import java.lang.System.err
 import java.util.*
 
 @SpringBootApplication
@@ -73,9 +74,7 @@ class UploadController(
         }
 
         val response = visionTemplate.analyzeImage(file.resource, Feature.Type.LABEL_DETECTION)
-        val labels = response.labelAnnotationsList.take(5)
-            .map { it.description }
-            .joinToString { "," }
+        val labels = response.labelAnnotationsList.take(5).joinToString(",") { it.description }
 
         return photoRepository.save(
             Photo(
